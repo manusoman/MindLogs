@@ -1,0 +1,105 @@
+header {
+}
+
+h1 {
+  margin-bottom: 26px;
+  font-size: 46px;
+  font-weight: 900;
+}
+
+h2 {
+  margin: 50px 0px 20px 0px;
+  font-size: 30px;
+}
+
+h2, h3 {
+  font-weight: 700;
+}
+
+p {
+  margin-bottom: 30px;
+  line-height: 28px;
+}
+
+h1, h2, h3, p {
+  color: var(--dark);
+}
+
+hr:before {
+  content: "****";
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--flash);
+}
+
+article {
+  margin-top: 80px;
+}
+
+.textLink {
+  color: var(--linkColor);  
+}
+
+.horizontal > li {
+  display: inline-block;
+}
+
+.main_frame {
+  padding-left: 160px;
+  width: 100%;
+  max-width: 860px;
+}
+
+@media screen and (max-width: 900px) {
+  .main_frame {
+    padding: 0px 100px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .main_frame {
+    padding: 0px 30px;
+  }
+}
+
+#topNav {
+  padding: 10px 0px;
+}
+
+#topNav > a {
+  font-weight: 700;
+}
+
+.heading {
+  margin-bottom: 60px;
+}
+
+#time_n_read {
+  margin: 0px 0px 10px 5px;
+  display: block;
+  font-size: 16px;
+}
+
+.code {
+  margin: 30px 0px;
+}
+
+#nextPrevNav {
+  margin: 60px 0px;
+}
+
+#nextPrevNav > div {
+  padding: 16px 0px;
+  border-bottom: 1px solid #e0e0e0;  
+}
+
+#nextPrevNav > div > span {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px
+}
+
+#nextPrevNav > div > a {
+  display: block;
+  font-weight: 700;
+}

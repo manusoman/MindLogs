@@ -18,10 +18,6 @@ p {
   line-height: 28px;
 }
 
-h1, h2, p {
-  color: var(--dark);
-}
-
 .horizontal > li {
   display: inline-block;
 }
@@ -50,9 +46,10 @@ h1, h2, p {
 
 #articles > li:before {
   content: "****";
+  font-family: 'Montserrat', sans-serif;
   font-size: 30px;
   font-weight: 700;
-  color: var(--flash);
+  color: var(--flash_light);
 }
 
 .tags {

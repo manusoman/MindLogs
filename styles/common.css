@@ -1,8 +1,10 @@
 :root {
     --primary: #483464;
     --dark: #483464;
+    --grey: #726880;
     --bg: #fffffb;
-    --flash: #ff5092;
+    --flash: #fb337e;
+    --flash_light: #ff73a7;
     --link: #a750ff;
     --tagColor: #48346480;
     --tagBG: #ffffc3;
@@ -17,7 +19,7 @@
 }
 
 html {
-  font-family: 'Montserrat', sans-serif;
+  font-family: arial, sans-serif;
   font-size: 18px;
 }
 
@@ -31,6 +33,19 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, p {
+  color: var(--dark);
+}
+
+.textLink {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--linkColor);  
 }
 
 .tags > li {
@@ -51,4 +66,8 @@ footer {
   font-family: arial, sans-serif;
   font-size: 14px;
   color: var(--dark);
+}
+
+#copyright {
+  color: var(--grey);
 }

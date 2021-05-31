@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>I can’t Promise, but Probably should work.</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../res/favicon.svg" />
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/article.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap">
+    <link rel="stylesheet" href="../styles/prism.css">
+</head>
+<body>
+
+<header>
+    <div class="main_frame">
+        <div id="topNav">
+            <a href="https://manusoman.github.io/MindLogs" class="textLink">Home</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="main_frame">
+        <article>
+            <section class="heading">
+                <h1>I can’t Promise, but Probably should work.</h1>
+                <span id="time_n_read"><time>January 22, 2021</time><strong> • </strong><time>3 minutes read</time></span>
+                <ul class="horizontal tags">
+                    <li>javascript</li><li>programming</li>
+                </ul>
+            </section>
+
+            <section class="body">
+                <p>Hey folks!</p>
+                <p>Have you ever used something without understanding how it works?<br>
+                    - Then raise your right leg up.<br>
+                    - Then raise your left leg up.<br>
+                    - Catch yourself if you fall down.<br>
+                    - Finally, continue reading the rest of this article.<br>
+                    </p>
+                <p>Sounds familiar? Yup, JavaScript Promises.</p>
+                <hr>
+                <p>I had some difficulty in understanding and using JavaScript promises when they first appeared. Later I got comfortable using them, although the understanding was still missing. So, in an attempt to bring understanding, I tried to recreate the core functionality of Promise from scratch. It came out well and I realized Promises were not all that hard!</p>
+                <p>I still like the good old callback functions by the way… Well, kind of… I don’t know... Whatever...</p>
+                <p>Just a side note: This is not an article about how exactly Promises work. Rather, this is an attempt to write asynchronous code in a synchronous way - just like Promises. Yet, doing so might make Promises clearer to you.</p>
+                <p>Let’s first look at how we use a <span class="codeWord">Promise</span> first.</p>
+
+<div class="code"><pre><code class="language-javascript">
+    // Create a Promise
+    const task = new Promise((resolve, reject) => {
+
+        // Use setTimeout to create asynchronicity
+        setTimeout(() => {
+
+            // Choose 0 or 1 randomly
+            const flag = Math.round(Math.random());
+
+            // Invoke resolve or reject handlers based on flag
+            flag ? resolve('Success!') : reject(new Error('Oops!'));
+
+        }, 1000);
+    });
+
+
+    // Add custom resolve and reject handlers
+    task.then(console.log)
+    .catch(console.error)
+    .finally(() => console.log('Meh...'));
+
+</code></pre></div>
+
+                <p>A new Promise is created and passed in the executor function. I used the ‘setTimout’ method to create an asynchronous operation and then called the resolve or reject handlers based on the value of the flag variable. Wait a second… Are const variables variables? They can’t vary!</p>
+                <p>Next, the "then", "catch" and "finally" methods are used to pass in the resolve, reject and default handlers to the Promise. Those will be executed accordingly once the asynchronous executor finishes its job. This is the core of a JavaScript Promise.</p>
+                <h2>Now, how can we do this ourselves, Probably?</h2>
+                <p>Let’s start with a question. In the previous example, the executor function will be executed immediately after the Promise is created (that’s the requirement). But how does that work since we haven’t provided those resolve and reject parameters yet?!</p>
+                <p>Simple. Just create default handlers and pass it on to the executor. Later when the user supplies their own resolve and reject handlers, store them as well. Once the Promise resolves or rejects, the default handlers obtain the value and pass it on to the stored handlers of the user. Ta-da… Results... Just as Promised! This resolved the mystery of <span class="codeWord">Promise</span> for me.</p>
+                <p>Alright then, let’s recreate this baby (no, that’s not what I meant). But what do we name him? ...her? Anyway, I’m very modest about my programming skills. Hence, it’s not wise for me to Promise or Ensure or Guarantee or Swear or anything. Instead, I name it "<span class="codeWord">Probably</span>" - yes, I just used an adverb as noun, because I can.</p>
+                <p>So... Yeah, this should Probably work.</p>
+                <p>Alright, let’s jump into the code. The Probably constructor first. I still use the old-style function constructors to create objects (perhaps I’m not class-y). In order to simplify the code, we won’t do error handling and other checks (who’d wanna do error handling anyway? That’s for kids, real men don’t do that).</p>
+                
+<div class="code"><pre><code class="language-javascript">
+    // The Probably constructor
+    function Probably(executor) {
+    
+        // "Pending" is always the initial state
+        this.state = 'pending';
+    
+        // Properties to store users' handlers
+        // for resolve, reject and finally.
+        this.res = null;
+        this.rej = null;
+        this.fin = null;
+    
+        executor(
+
+            // Default resolve handler
+            (val) => {
+                this.value = val;
+                this.state = 'fulfilled';
+                this.res && this.res(val);
+                this.fin && this.fin();
+            },
+
+            // Default reject handler
+            (err) => {
+                this.reason = err;
+                this.state = 'rejected';
+                this.rej && this.rej(err);
+                this.fin && this.fin();
+            }
+        );
+    }
+
+</code></pre></div>
+
+                <p>Just like Promises, Probably can have three states. <span class="codeWord">pending</span> is always the initial state. Later, the state changes to either “fulfilled” or “rejected” based on which default handler is called by the executor function. Then we add three properties “res”, “rej” and “fin” to store the resolve, reject and finally handlers when the user adds them through “then”, “catch” and “finally” respectively. </p>
+                <p>The executor function is run next and the default resolve and reject handlers are passed as parameters. When the result is obtained, first it gets stored in the object and then the respective user provided handlers are fired by passing result. Note that for storing the result, we’re creating a property as either “value” (for resolve) or “reason”  for resolve or reject respectively.</p>
+                <p>Next, we will build the prototype of <span class="codeWord">Probably</span>.</p>
+
+<div class="code"><pre><code class="language-javascript">
+    Probably.prototype = {
+
+        constructor : Probably,
+    
+        then : function(res, rej) {
+            this.res = res;    
+            this.value && res(this.value);    
+            rej && this.catch(rej);
+            return this;
+        },
+    
+        catch : function(rej) {
+            this.rej = rej;    
+            this.reason && rej(this.reason);    
+            return this;
+        },
+    
+        finally : function(fin) {
+            this.fin = fin;
+            this.state !== 'pending' && fin();
+        }
+    };
+
+</code></pre></div>
+
+                <p>Now that we have set up <span class="codeWord">Probably</span>, let's see it in action. I'm using the same code of <span class="codeWord">Promise</span> for <span class="codeWord">Probably</span>.</p>
+                <p> Would it work? Probably.</p>
+
+<div class="code"><pre><code class="language-javascript">
+    // Create a Probably object
+    const task = new Probably((resolve, reject) => {
+
+        // Use setTimeout to create asynchronicity
+        setTimeout(() => {
+
+            // Choose 0 or 1 randomly
+            const flag = Math.round(Math.random());
+
+            // Invoke resolve or reject handlers based on flag
+            flag ? resolve('Success!') : reject(new Error('Oops!'));
+
+        }, 1000);
+    });
+
+
+    // Add custom resolve and reject handlers
+    task.then(console.log)
+    .catch(console.error)
+    .finally(() => console.log('Meh...'));
+
+</code></pre></div>
+
+                <p></p>
+                <hr>
+            </section>
+        </article>
+
+        <section id="nextPrevNav">
+            <div>
+                <span>Next Article</span>
+                <a class="nextLink textLink" href="">Is Lorem Ipsum dummy text of the printing industry?</a>
+            </div>
+            <div>
+                <span>Previous Article</span>
+                <a class="prevLink textLink" href="">Is Lorem Ipsum dummy a text?</a>
+            </div>
+        </section>
+
+        <section id="comments">
+            <div>
+                <span>Liked it? Share this article and leave comments on</span>
+                <span><a class="nextLink textLink" href="">Twitter</a> • <a class="nextLink textLink" href="">Facebook</a></span>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="main_frame">
+        <span id="copyright"></span>
+    </div>
+</footer>
+
+<script type="text/javascript" src="../src/index.js"></script>
+<script type="text/javascript" src="../src/prism.js"></script>
+</body>
+</html> 

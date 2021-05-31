@@ -8,7 +8,7 @@ h1 {
 }
 
 h2 {
-  margin: 50px 0px 20px 0px;
+  margin: 50px 0px 30px 0px;
   font-size: 30px;
 }
 
@@ -21,23 +21,18 @@ p {
   line-height: 28px;
 }
 
-h1, h2, h3, p {
-  color: var(--dark);
-}
-
 hr:before {
+  display: block;
+  margin: 50px 0px 40px 0px;
   content: "****";
+  font-family: 'Montserrat', sans-serif;
   font-size: 30px;
   font-weight: 700;
-  color: var(--flash);
+  color: var(--flash_light);
 }
 
 article {
   margin-top: 80px;
-}
-
-.textLink {
-  color: var(--linkColor);  
 }
 
 .horizontal > li {
@@ -48,6 +43,19 @@ article {
   padding-left: 160px;
   width: 100%;
   max-width: 860px;
+}
+
+.heading {
+  margin-bottom: 60px;
+}
+
+.codeWord {
+  font-family: 'consolas', monospace;
+  color: var(--flash);
+}
+
+.code {
+  margin: 30px 0px;
 }
 
 @media screen and (max-width: 900px) {
@@ -71,21 +79,14 @@ article {
   font-weight: 700;
 }
 
-.heading {
-  margin-bottom: 60px;
-}
-
 #time_n_read {
   margin: 0px 0px 10px 5px;
   display: block;
   font-size: 16px;
+  color: var(--grey);
 }
 
-.code {
-  margin: 30px 0px;
-}
-
-#nextPrevNav {
+#nextPrevNav, #comments {
   margin: 60px 0px;
 }
 
@@ -94,13 +95,19 @@ article {
   border-bottom: 1px solid #e0e0e0;  
 }
 
-#nextPrevNav > div > span {
+#nextPrevNav > div > span,
+#comments > div > span {
   display: block;
   margin-bottom: 5px;
-  font-size: 16px
+  font-size: 16px;
+  color: var(--grey);
 }
 
 #nextPrevNav > div > a {
   display: block;
+  font-weight: 700;
+}
+
+#comments > div > span > a {
   font-weight: 700;
 }

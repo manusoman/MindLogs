@@ -10,9 +10,12 @@ h1 {
 h2 {
   margin: 50px 0px 30px 0px;
   font-size: 30px;
+  font-weight: 700;
 }
 
-h2, h3 {
+h3 {
+  margin: 50px 0px 20px 0px;
+  font-size: 20px;
   font-weight: 700;
 }
 
@@ -35,10 +38,6 @@ article {
   margin-top: 80px;
 }
 
-.horizontal > li {
-  display: inline-block;
-}
-
 .main_frame {
   padding-left: 160px;
   width: 100%;
@@ -47,6 +46,11 @@ article {
 
 .heading {
   margin-bottom: 60px;
+}
+
+.highLight {
+  padding: 0px 3px;
+  background-color: var(--highLight);
 }
 
 .codeWord {
@@ -76,6 +80,7 @@ article {
 }
 
 #topNav > a {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
 
@@ -105,9 +110,11 @@ article {
 
 #nextPrevNav > div > a {
   display: block;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
 
 #comments > div > span > a {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }

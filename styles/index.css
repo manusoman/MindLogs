@@ -1,8 +1,9 @@
 header {
-  padding: 180px 0px;
+  padding: 180px 0px 150px 0px;
 }
 
 h1 {
+  margin-bottom: 30px;
   font-size: 76px;
   font-weight: 900;
 }
@@ -14,12 +15,7 @@ h2 {
 }
 
 p {
-  margin-bottom: 10px;
   line-height: 28px;
-}
-
-.horizontal > li {
-  display: inline-block;
 }
 
 .main_frame {
@@ -38,6 +34,16 @@ p {
   .main_frame {
     padding: 0px 30px;
   }
+}
+
+#contacts {
+  font-size: 16px;
+  color: var(--grey);
+}
+
+#contacts > li + li:before {
+  content: "•";
+  margin: 0px 10px;
 }
 
 #articles > li {

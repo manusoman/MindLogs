@@ -3,6 +3,7 @@
     --dark: #483464;
     --grey: #726880;
     --bg: #fffffb;
+    --highLight: #deffa2;
     --flash: #fb337e;
     --flash_light: #ff73a7;
     --link: #a750ff;
@@ -27,8 +28,12 @@ body {
   background-color: var(--bg);
 }
 
-ul {
+ul.no_bullet {
   list-style: none;
+}
+
+.horizontal > li {
+  display: inline-block;
 }
 
 a {
@@ -44,8 +49,7 @@ h1, h2, h3, p {
 }
 
 .textLink {
-  font-family: 'Montserrat', sans-serif;
-  color: var(--linkColor);  
+  color: var(--linkColor);
 }
 
 .tags > li {

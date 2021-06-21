@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../res/favicon.svg" />
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/article.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap">
+    <link rel="stylesheet" href="../styles/prism.css">
+</head>
+<body>
+
+<header>
+    <div class="main_frame">
+        <div id="topNav">
+            <a href="https://manusoman.github.io/MindLogs" class="textLink">Home</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="main_frame">
+        <article>
+            <section class="heading">
+                <h1>{{title}}</h1>
+                <span id="time_n_read"><time>{{publish}}</time><strong> • </strong><time>{{readLength}}</time></span>
+                <ul class="no_bullet horizontal tags">
+                    {{tags}}
+                </ul>
+            </section>
+
+            <section class="body">{{body}}</section>
+        </article>
+
+        <section id="nextPrevNav">
+            <div>
+                <span>Next Article</span>
+                <a class="nextLink textLink" href="">It's under development - please wait ;)</a>
+            </div>
+            <div>
+                <span>Previous Article</span>
+                <a class="prevLink textLink" href="">None, this is the first one I wrote :D</a>
+            </div>
+        </section>
+
+        <section id="comments">
+            <div>
+                <span>Liked it? Share and leave comments on</span>
+                <span id="social_share"><a class="nextLink textLink" href="">Twitter</a> • <a class="nextLink textLink" href="">Facebook</a></span>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="main_frame">
+        <span id="copyright"></span>
+    </div>
+</footer>
+
+<script type="text/javascript" src="../src/index.js"></script>
+<script type="text/javascript" src="../src/prism.js"></script>
+</body>
+</html> 

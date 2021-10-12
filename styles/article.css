@@ -74,16 +74,6 @@ article {
   }
 }
 
-#topNav {
-  padding: 20px 0px;
-  border-bottom: 1px solid #e0e0e0;  
-}
-
-#topNav > a {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-}
-
 #time_n_read {
   margin: 0px 0px 10px 5px;
   display: block;

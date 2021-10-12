@@ -48,6 +48,20 @@ h1, h2, h3, p {
   color: var(--dark);
 }
 
+#topNav {
+  padding: 20px 0px;
+  border-bottom: 1px solid #e0e0e0;  
+}
+
+#topNav > li {
+  margin-right: 30px;
+}
+
+#topNav a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
 .textLink {
   color: var(--linkColor);
 }

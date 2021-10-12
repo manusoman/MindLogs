@@ -3,7 +3,6 @@ header {
 }
 
 h1 {
-  margin-bottom: 30px;
   font-size: 76px;
   font-weight: 900;
 }
@@ -38,16 +37,6 @@ p {
 
 #topNav {
   margin-bottom: 120px;
-}
-
-#contacts {
-  font-size: 16px;
-  color: var(--grey);
-}
-
-#contacts > li + li:before {
-  content: "•";
-  margin: 0px 10px;
 }
 
 #articles > li {
